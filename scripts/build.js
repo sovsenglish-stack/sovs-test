@@ -41,17 +41,15 @@ function page(answer) {
     <div class="card">
       <header>
         <div class="title"><span class="bar"></span>SOVS VOCA TEST <em>${answer ? '정답 · ' : ''}${esc(g)}</em></div>
-        <div class="field">DATE <span class="line"></span></div>
+        ${answer ? '<div class="field">DATE <span class="line"></span></div>' : ''}
       </header>
+      ${answer ? '' : '<div class="idbox"><span>학교</span><i></i><span>학년</span><i></i><span>이름</span><i></i><span>날짜</span><i></i><span>점수</span><i></i></div>'}
       <div class="instr">
         <div>
           <p>※ ${answer ? '채점용 정답지입니다. 표시는 문제지에 합니다.' : '주어진 영어 단어를 보고 알맞은 우리말 뜻을 쓰시오.'}</p>
           ${answer ? '<small>구간별 오답 수가 진단 리포트의 어휘 수준 판정에 사용됩니다.</small>' : ''}
         </div>
-        <div class="fields">
-          <div class="field">SCORE <span class="line"></span></div>
-          ${answer ? '' : '<div class="field kr">이름 <span class="line"></span></div>'}
-        </div>
+        ${answer ? '<div class="fields"><div class="field">SCORE <span class="line"></span></div></div>' : ''}
       </div>
       ${answer ? `<div class="badges">${badges}</div>` : ''}
       ${rows(answer)}
@@ -82,6 +80,11 @@ header { display: flex; justify-content: space-between; align-items: center; pad
 .instr p { font-weight: 700; font-size: 10.5pt; }
 .instr small { display: block; font-size: 7.5pt; color: #666; font-weight: 500; margin-top: 2pt; }
 .fields { display: flex; gap: 14pt; }
+.idbox { margin: 8pt 12pt 0 8pt; border: 1.2pt solid #182557; border-radius: 6pt; display: grid; grid-template-columns: auto 1.3fr auto .7fr auto 1.3fr auto 1fr auto .8fr; align-items: center; padding: 5pt 10pt; gap: 0 7pt; font-family: 'Noto Sans KR'; font-size: 8.5pt; }
+.idbox span { font-weight: 700; color: #182557; white-space: nowrap; }
+.idbox i { border-bottom: 1pt solid #111; height: 13pt; display: block; }
+.page:not(.answer) .instr { padding-top: 6pt; }
+.page:not(.answer) .row { height: 26.6pt; }
 .badges { display: flex; gap: 6pt; padding: 2pt 12pt 6pt 12pt; font-family: 'Noto Sans KR'; }
 .badge { flex: 1; display: flex; justify-content: space-between; align-items: center; border-radius: 4pt; padding: 4pt 10pt; font-size: 8pt; font-weight: 700; }
 .badge:nth-child(2) { flex: 1.35; }
