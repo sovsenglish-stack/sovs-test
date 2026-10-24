@@ -1,5 +1,5 @@
 // 사용법: node scripts/build.js data/go2.json out/
-// 문제지(1p) + 빈 페이지 + 정답지(1p) + 빈 페이지 = 4p A4 PDF (양면 인쇄용)
+// 문제지(1p) + 정답지(1p) = 2p A4 PDF
 const fs = require('fs');
 const path = require('path');
 const { chromium } = require('playwright');
@@ -101,7 +101,7 @@ header { display: flex; justify-content: space-between; align-items: center; pad
 .answer .row { height: 26.2pt; }
 footer { text-align: center; font-size: 6.5pt; color: #777; letter-spacing: 0.5pt; margin-top: 4pt; font-family: 'Poppins','Noto Sans KR'; }
 </style></head><body>
-${page(false)}<section class="page blank"></section>${page(true)}<section class="page blank"></section>
+${page(false)}${page(true)}
 </body></html>`;
 
 fs.mkdirSync(outDir, { recursive: true });
